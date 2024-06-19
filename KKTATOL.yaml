@@ -1,0 +1,248 @@
+zabbix_export:
+  version: '5.4'
+  date: '2024-06-19T10:43:35Z'
+  groups:
+    -
+      uuid: b2684cc78938481f977876264fe47e79
+      name: KKTATOL
+  templates:
+    -
+      uuid: 1903f54cd46d44aab200a4508c948db0
+      template: KKTATOL
+      name: KKTATOL
+      description: 'Шаблон для мониторинга KKTATOL'
+      groups:
+        -
+          name: KKTATOL
+      items:
+        -
+          uuid: 081ccd75997e4c47a841d24f3afbc9ee
+          name: 'ЗН Кассы'
+          type: EXTERNAL
+          key: 'multikktatol.py[1,{HOST.CONN},{$PORT}]'
+          delay: 12h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Заводской номер кассы'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+        -
+          uuid: 2c56535ddf0747f3a1378049b75d3166
+          name: 'РНМ Кассы'
+          type: EXTERNAL
+          key: 'multikktatol.py[2,{HOST.CONN},{$PORT}]'
+          delay: 12h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+        -
+          uuid: 2fcffb649a584a7ba263259a3300738b
+          name: 'Номер ФН'
+          type: EXTERNAL
+          key: 'multikktatol.py[3,{HOST.CONN},{$PORT}]'
+          delay: 12h
+          history: 7d
+          trends: '0'
+          value_type: CHAR
+          description: 'Номер фискального накопителя'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+        -
+          uuid: e9d475249fc84bcb8dcb224825a1a57b
+          name: 'Дней до окончания ФН'
+          type: EXTERNAL
+          key: 'multikktatol.py[4,{HOST.CONN},{$PORT}]'
+          delay: 6h
+          history: 7d
+          trends: '0'
+          description: 'Осталось дней до необходимости замены фискального накопителя'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+          triggers:
+            -
+              uuid: 060d3601950b4ede8509c89a26eddeba
+              expression: 'sum(/KKTATOL/multikktatol.py[4,{HOST.CONN},{$PORT}],#6)<{$DFN}'
+              name: 'ФН закончится через {ITEM.LASTVALUE} дней'
+              priority: HIGH
+        -
+          uuid: 987167e971b5483b97e0ca275046fab5
+          name: 'Возраст в днях документа в буфере ФН'
+          type: EXTERNAL
+          key: 'multikktatol.py[5,{HOST.CONN},{$PORT}]'
+          delay: 12h
+          history: 7d
+          trends: '0'
+          description: 'Возраст в днях первого не отправленного документа находящегося в буфере фискального накопителя'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+          triggers:
+            -
+              uuid: 518de61dddf442f2a056564dce3ab28b
+              expression: 'last(/KKTATOL/multikktatol.py[5,{HOST.CONN},{$PORT}])>10'
+              name: 'В буфере ФН документы старше {ITEM.LASTVALUE} дней'
+              priority: HIGH
+        -
+          uuid: 40a7b558760144ec869b0ff097b85e5e
+          name: 'Модель ККТ'
+          type: EXTERNAL
+          key: 'multikktatol.py[6,{HOST.CONN},{$PORT}]'
+          delay: 12h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          inventory_link: MODEL
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+        -
+          uuid: ddc5995f942545b8b09516c4a1f498f1
+          name: 'Версия прошивки'
+          type: EXTERNAL
+          key: 'multikktatol.py[7,{HOST.CONN},{$PORT}]'
+          delay: 12h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          inventory_link: SOFTWARE
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+        -
+          uuid: 5f2cf62db7e24094a28262c443fca5a6
+          name: 'Дней до окончания лицензии №1 (Фискальные функции)'
+          type: EXTERNAL
+          key: 'multikktatol.py[8,{HOST.CONN},{$PORT}]'
+          delay: 6h
+          history: 7d
+          trends: '0'
+          description: 'Осталось дней до необходимости обновления лицензии №1 (Фискальные функции)'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+          triggers:
+            -
+              uuid: 1eeb572ea91c48f8800ce2e734faa4f8
+              expression: 'last(/KKTATOL/multikktatol.py[8,{HOST.CONN},{$PORT}])<{$DLICENSE1}'
+              name: '{ITEM.LASTVALUE} дней до окончания лицензии №1 (Фискальные функции)'
+              priority: HIGH
+        -
+          uuid: bf6716c26189430cb0cbdfd0e46a3291
+          name: 'Дней до окончания лицензии №2 (Запись ПО ККТ)'
+          type: EXTERNAL
+          key: 'multikktatol.py[9,{HOST.CONN},{$PORT}]'
+          delay: 6h
+          history: 7d
+          trends: '0'
+          description: 'Осталось дней до необходимости обновления лицензии №2 (Запись ПО ККТ)'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+          triggers:
+            -
+              uuid: 9b910e6b82864fd59b2429a2a2119843
+              expression: 'last(/KKTATOL/multikktatol.py[9,{HOST.CONN},{$PORT}])<{$DLICENSE2}'
+              name: '{ITEM.LASTVALUE} дней до окончания лицензии №2 (Запись ПО ККТ)'
+              priority: HIGH
+        -
+          uuid: 3c9ad97382294260aa8c4fd3d1954f3d
+          name: 'Дней до окончания лицензии №3 (Работа с НДС 20%)'
+          type: EXTERNAL
+          key: 'multikktatol.py[10,{HOST.CONN},{$PORT}]'
+          delay: 6h
+          history: 7d
+          trends: '0'
+          description: 'Осталось дней до необходимости обновления лицензии №3 (Работа с НДС 20%)'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+          triggers:
+            -
+              uuid: 06dd3bfd188343d3a3a17682b6e178e9
+              expression: 'last(/KKTATOL/multikktatol.py[10,{HOST.CONN},{$PORT}])<{$DLICENSE3}'
+              name: '{ITEM.LASTVALUE} дней до окончания лицензии №3 (Работа с НДС 20%)'
+              priority: HIGH
+        -
+          uuid: aa64366080794853af8c2505b647a0fe
+          name: 'Дней до окончания лицензии №4 (Работа с ФФД 1.1)'
+          type: EXTERNAL
+          key: 'multikktatol.py[11,{HOST.CONN},{$PORT}]'
+          delay: 6h
+          history: 7d
+          trends: '0'
+          description: 'Осталось дней до необходимости обновления лицензии №4 (Работа с ФФД 1.1)'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+          triggers:
+            -
+              uuid: 87ac109f8ac24fb8b298aebae0f63ddd
+              expression: 'last(/KKTATOL/multikktatol.py[11,{HOST.CONN},{$PORT}])<{$DLICENSE4}'
+              name: '{ITEM.LASTVALUE} дней до окончания лицензии №4 (Работа с ФФД 1.1)'
+              priority: HIGH
+        -
+          uuid: b803ed8ce65544f1b89bec7fdb43b025
+          name: 'Дней до окончания лицензии №5 (Обработка маркировки)'
+          type: EXTERNAL
+          key: 'multikktatol.py[12,{HOST.CONN},{$PORT}]'
+          delay: 6h
+          history: 7d
+          trends: '0'
+          description: 'Осталось дней до необходимости обновления лицензии №5 (Обработка маркировки)'
+          tags:
+            -
+              tag: Application
+              value: KKTAtol
+          triggers:
+            -
+              uuid: e063ffc6c6924149a48ddbcd8eef6200
+              expression: 'last(/KKTATOL/multikktatol.py[12,{HOST.CONN},{$PORT}])<{$DLICENSE5}'
+              name: '{ITEM.LASTVALUE} дней до окончания лицензии №5 (Обработка маркировки)'
+              priority: HIGH
+      macros:
+        -
+          macro: '{$DFN}'
+          value: '100'
+          description: 'Дней до необходимости замены фискального накопителя'
+        -
+          macro: '{$DLICENSE1}'
+          value: '30'
+          description: 'Дней до окончания лицензии №1 (Фискальные функции)'
+        -
+          macro: '{$DLICENSE2}'
+          value: '30'
+          description: 'Дней до окончания лицензии №2 (Запись ПО ККТ)'
+        -
+          macro: '{$DLICENSE3}'
+          value: '30'
+          description: 'Дней до окончания лицензии №2 (Запись ПО ККТ)'
+        -
+          macro: '{$DLICENSE4}'
+          value: '30'
+          description: 'Дней до окончания лицензии №4 (Работа с ФФД 1.1)'
+        -
+          macro: '{$DLICENSE5}'
+          value: '30'
+          description: 'Дней до окончания лицензии №5 (Обработка маркировки)'
+        -
+          macro: '{$PORT}'
+          value: '5555'
+          description: 'Порт для работы c ККТ'
