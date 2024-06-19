@@ -1,7 +1,31 @@
 # KKTATOL
+
 Скрипт для мониторинга ККТ АТОЛ в Zabbix по IP
 
-Шаблон KKTATOL.yaml необходимо загрузить в zabbix через импорт (РАБОТАЕТ ТОЛЬКО С ВЕРСИИ ZABBIX 5.4)
-![изображение](https://github.com/shendr404/KKTATOL/assets/143122797/7735892f-7420-4cd6-8f75-2e2340ef21e2)
+## Описание
 
-Файлы kktatol.py , multikktatol.py , rebootkkt.py необходимо загрузить по пути /usr/lib/zabbix/externalscripts/ и дать файлам права на выполнение с помощью chmod +x
+Этот проект содержит скрипты для мониторинга ККТ АТОЛ через Zabbix. Скрипты позволяют получать информацию о состоянии ККТ и перезагружать устройства по IP.
+
+## Требования
+
+- Zabbix 5.4 или выше
+- Драйвер ККТ АТОЛ версии 10.10.3.0
+
+## Установка
+
+1. **Импорт шаблона Zabbix**
+
+   Загрузите шаблон `KKTATOL.yaml` в Zabbix через импорт (РАБОТАЕТ ТОЛЬКО С ВЕРСИИ ZABBIX 5.4).
+
+   ![изображение](https://github.com/shendr404/KKTATOL/assets/143122797/7735892f-7420-4cd6-8f75-2e2340ef21e2)
+
+2. **Размещение скриптов**
+
+   Скопируйте файлы `kktatol.py`, `multikktatol.py` и `rebootkkt.py` в директорию `/usr/lib/zabbix/externalscripts/` и дайте файлам права на выполнение:
+
+   ```bash
+   sudo chmod +x /usr/lib/zabbix/externalscripts/kktatol.py
+   sudo chmod +x /usr/lib/zabbix/externalscripts/multikktatol.py
+   sudo chmod +x /usr/lib/zabbix/externalscripts/rebootkkt.py
+
+Необходимо так же загрузить драйвер для работы с ККТ Атол https://fs.atol.ru/SitePages/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%20%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8.aspx файл Драйвер ККТ 10.10.3.0 внтури него есть папка installer там есть пакеты для deb и для rpm, нам нужен драйвер libfptr10_10.10.3.0
