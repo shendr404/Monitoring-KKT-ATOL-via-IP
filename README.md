@@ -19,7 +19,7 @@
 
 2. **Размещение скриптов**
 
-   Скопируйте файлы `kktatol.py`, `multikktatol.py` и `rebootkkt.py` в директорию `/usr/lib/zabbix/externalscripts/` и дайте файлам права на выполнение:
+   Скопируйте файлы `kktatol.py`, `multikktatol.py` и `rebootkkt.py` в директорию `/usr/lib/zabbix/externalscripts/` на сервере Zabbix и дайте файлам права на выполнение:
 
    ```bash
    sudo chmod +x /usr/lib/zabbix/externalscripts/kktatol.py
@@ -29,7 +29,7 @@
    
 3. **Установка драйвера для ККТ АТОЛ**
 
-   Загрузите драйвер для работы с ККТ АТОЛ с [этой страницы](https://fs.atol.ru/SitePages/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%20%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8.aspx). Внутри архива с драйвером `Драйвер ККТ 10.10.3.0` в папке `installer` найдите пакеты для deb и rpm. Установите пакет `libfptr10_10.10.3.0`, подходящий для вашей системы.
+   Загрузите драйвер на сервер Zabbix для работы с ККТ АТОЛ с [этой страницы](https://fs.atol.ru/SitePages/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%20%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8.aspx). Внутри архива с драйвером `Драйвер ККТ 10.10.3.0` в папке `installer` найдите пакеты для deb и rpm. Установите пакет `libfptr10_10.10.3.0`, подходящий для вашей системы.
 
 ## Использование
 - **kktatol.py**
