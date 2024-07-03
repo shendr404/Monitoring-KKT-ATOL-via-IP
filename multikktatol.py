@@ -1,4 +1,4 @@
-#!/usr/bin/python3.6
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import subprocess
