@@ -1,4 +1,4 @@
-# KKTATOL
+# Zabbix KKT ATOL via IP
 
 Скрипт для мониторинга ККТ АТОЛ в Zabbix по IP
 
