@@ -79,10 +79,10 @@
    13. Перезагрузка ККТ
 
 ## Лицензия
-   Этот проект лицензирован под лицензией GPL-3.0 - подробности см. в файле [LICENSE](https://github.com/shendr404/Monitoring-KKT-ATOL-via-IP/blob/main/LICENSE).
+   Этот проект лицензирован под лицензией GPL-3.0 - подробности см. в файле [LICENSE](https://github.com/shendr404/Zabbix-KKT-ATOL-via-IP/blob/main/LICENSE).
 
 ## Поддержка
 
-   Если у вас возникли вопросы или предложения, вы можете связаться с автором через [GitHub Issues](https://github.com/shendr404/Monitoring-KKT-ATOL-via-IP/issues).
+   Если у вас возникли вопросы или предложения, вы можете связаться с автором через [GitHub Issues](https://github.com/shendr404/Zabbix-KKT-ATOL-via-IP/issues).
 
 Автор: [shendr404](https://github.com/shendr404)
