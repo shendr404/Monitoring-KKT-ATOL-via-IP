@@ -78,8 +78,11 @@
    12. Лицензия №5
    13. Перезагрузка ККТ
 
+## Лицензия
+   Этот проект лицензирован под лицензией GPL-3.0 - подробности см. в файле [LICENSE](https://github.com/shendr404/Monitoring-KKT-ATOL-via-IP/blob/main/LICENSE).
+
 ## Поддержка
 
-   Если у вас есть вопросы или предложения, пожалуйста, создайте issue в этом репозитории.
+   Если у вас возникли вопросы или предложения, вы можете связаться с автором через [GitHub Issues](https://github.com/shendr404/Monitoring-KKT-ATOL-via-IP/issues).
 
 Автор: [shendr404](https://github.com/shendr404)
